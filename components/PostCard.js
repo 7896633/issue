@@ -21,13 +21,16 @@ const PostCard = ({post,author}) => {
                 <div className='flex flex-[2.5] flex-col'>
                     <div className='flex gap-[.4rem]'>
                         <div className='grid place-items-center rounded-full overflow-hidden h-[1.4rem] w-[1.4rem]'>
-                            <Image
-                                src={authorData?.imageUer}
-                                alt=''
-                                width={40}
-                                height={40}
-                                className='object-cover'
-                            />
+                            {
+                                authorData?.imageUer&&
+                                <Image
+                                    src={authorData?.imageUer}
+                                    alt=''
+                                    width={40}
+                                    height={40}
+                                    className='object-cover'
+                                />
+                            }
                         </div>
                         <div className='font-medium'>{post.data.author}</div>
                     </div>
@@ -49,12 +52,16 @@ const PostCard = ({post,author}) => {
                 </div>
                 <Link href={`/post/${post.id}`}>
                 <div className='flex-1'>
-                    <Image
-                        src={post.data.bannerImage}
-                        alt=''
-                        height={100}
-                        width={100}
-                    />
+                    {
+                        post.data.bannerImage&&
+                        <Image
+                            src={post.data.bannerImage}
+                            alt=''
+                            height={100}
+                            width={100}
+                            className='w-auto h-auto'
+                        />
+                    }
                 </div>
             </Link>
             </div>

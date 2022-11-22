@@ -16,7 +16,7 @@ const Post = () => {
         }
         setPost(posts.find(post=>post.id===router.query.slug))
         setAuthor(users.find(user=>user.id===post.data?.author))
-    },[post])
+    },[post, posts, router.query.slug, users])
     return (
         <div className='flex'>
             <ReadersNav  author={author}/>

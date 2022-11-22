@@ -65,7 +65,7 @@ const MediumProvider=({children})=>{
       const userData=await signInWithPopup(auth, provider)
         const user=userData.user
         setCurrentUser(user)
-        await addUserToFirebase(user)
+        addUserToFirebase(user)
     }
     return(
         <MediumContext.Provider value={{posts,users,handleUserAuth,currentUser}}>
