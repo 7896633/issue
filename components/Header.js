@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {MediumContext} from "../context/MediumContext";
 import Modal from 'react-modal'
 import {useRouter} from "next/router";
@@ -23,14 +23,27 @@ const customStyles = {
     }
 };
 
+
 const Header = () => {
+    const [color, setColor] = useState(false);
+
+    useEffect(() => {
+        const changeColor=()=>{
+            if (window.scrollY>=300){
+                setColor(true);
+            }else {
+                setColor(false);
+            }
+        }
+        window.addEventListener('scroll',changeColor)
+    }, []);
     const router=useRouter()
     const {currentUser,handleUserAuth}=useContext(MediumContext)
     return (
-        <div className='flex justify-center gap-10 p-5 bg-blue-300/90'>
+        <div className={`${color ? 'fixed top-0 right-0 left-0  shadow-xl bg-white':'bg-blue-300/90 '} flex justify-center gap-10 p-5  ` }>
             <div className='max-w-7xl flex-1 flex justify-between gap-10'>
-                <div className='flex items-center '>
-                    <h1 className='text-3xl cursor-pointer object-center '>LOGO</h1>
+                <div className='flex items-center'>
+                    <h1 className='text-3xl cursor-pointer object-center'>LOGO</h1>
                 </div>
                 {currentUser ?
                     (
