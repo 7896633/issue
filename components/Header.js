@@ -70,6 +70,8 @@ const Header = () => {
                 onRequestClose={()=>router.push('/')}
                 style={customStyles}
             >
+
+                {/*发布*/}
                 <PostModal/>
             </Modal>
         </div>
